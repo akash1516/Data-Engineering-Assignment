@@ -1,0 +1,423 @@
+Q1. How do you load a CSV file into a Pandas DataFrame?
+sol:-
+import pandas as pd
+# Load CSV file into a DataFrame
+df = pd.read_csv('file.csv')
+# Print the first 5 rows of the DataFrame
+print(df.head())
+
+Q2. How do you check the data type of a column in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'salary': [50000.0, 60000.0, 70000.0],
+    'employed': [True, False, True]
+})
+
+# Check the data type of the 'name' column
+print(df['name'].dtype)
+
+Q3. How do you select rows from a Pandas DataFrame based on a condition?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'salary': [50000.0, 60000.0, 70000.0, 80000.0],
+    'employed': [True, False, True, False]
+})
+
+# Select rows where age is greater than 30
+subset = df[df['age'] > 30]
+
+# Print the subset DataFrame
+print(subset)
+
+
+Q4. How do you rename columns in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'salary': [50000.0, 60000.0, 70000.0]
+})
+
+# Rename the 'age' column to 'years'
+df = df.rename(columns={'age': 'years'})
+
+# Print the DataFrame
+print(df)
+
+Q5. How do you drop columns in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'salary': [50000.0, 60000.0, 70000.0]
+})
+
+# Drop the 'age' column
+df = df.drop(columns=['age'])
+
+Q6. How do you find the unique values in a column of a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David', 'Alice'],
+    'age': [25, 30, 35, 40, 25],
+    'salary': [50000.0, 60000.0, 70000.0, 80000.0, 50000.0]
+})
+
+# Get the unique values in the 'name' column
+unique_names = df['name'].unique()
+
+# Print the unique values
+print(unique_names)
+
+Q7. How do you find the number of missing values in each column of a Pandas DataFrame?
+sol:-
+import pandas as pd
+import numpy as np
+
+# Create a DataFrame with missing values
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David', 'Emma'],
+    'age': [25, np.nan, 35, 40, np.nan],
+    'salary': [50000.0, 60000.0, np.nan, 80000.0, 50000.0]
+})
+
+# Count the number of missing values in each column
+missing_values = df.isnull().sum()
+
+# Print the number of missing values
+print(missing_values)
+
+Q8. How do you fill missing values in a Pandas DataFrame with a specific value?
+sol:-
+# Fill missing values with a specific value
+df = df.fillna(value=0)
+
+Q9. How do you concatenate two Pandas DataFrames?
+sol:-
+import pandas as pd
+
+# Create two DataFrames
+df1 = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+})
+
+df2 = pd.DataFrame({
+    'name': ['David', 'Emma'],
+    'age': [40, 45],
+})
+
+# Concatenate the DataFrames
+df_concat = pd.concat([df1, df2])
+
+# Print the concatenated DataFrame
+print(df_concat)
+
+Q10. How do you merge two Pandas DataFrames on a specific column?
+sol:-
+import pandas as pd
+
+# Create two DataFrames
+df1 = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'city': ['New York', 'San Francisco', 'Boston']
+})
+
+df2 = pd.DataFrame({
+    'name': ['Charlie', 'David', 'Emma'],
+    'salary': [50000, 60000, 70000],
+    'city': ['Boston', 'San Francisco', 'New York']
+})
+
+# Merge the DataFrames on the 'name' column
+df_merged = pd.merge(df1, df2, on='name')
+
+# Print the merged DataFrame
+print(df_merged)
+
+Q11. How do you group data in a Pandas DataFrame by a specific column and apply an aggregation function?
+sol:-
+
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David', 'Emma', 'Fred'],
+    'gender': ['F', 'M', 'M', 'M', 'F', 'M'],
+    'age': [25, 30, 35, 40, 45, 50],
+    'salary': [50000, 60000, 70000, 80000, 90000, 100000]
+})
+
+# Group the DataFrame by the 'gender' column and calculate the mean salary
+df_grouped = df.groupby('gender').agg({'salary': 'mean'})
+
+# Print the grouped and aggregated DataFrame
+print(df_grouped)
+
+Q12. How do you pivot a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David', 'Emma', 'Fred'],
+    'gender': ['F', 'M', 'M', 'M', 'F', 'M'],
+    'age': [25, 30, 35, 40, 45, 50],
+    'city': ['NY', 'LA', 'LA', 'NY', 'NY', 'LA'],
+    'salary': [50000, 60000, 70000, 80000, 90000, 100000]
+})
+
+# Pivot the DataFrame
+df_pivot = df.pivot(index='name', columns='city', values='salary')
+
+# Print the pivoted DataFrame
+print(df_pivot)
+
+Q13. How do you change the data type of a column in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': ['25', '30', '35'],
+    'salary': ['50000', '60000', '70000']
+})
+
+# Print the original DataFrame
+print(df)
+
+# Change the data type of the 'age' column to integer
+df['age'] = df['age'].astype(int)
+
+# Change the data type of the 'salary' column to float
+df['salary'] = df['salary'].astype(float)
+
+# Print the updated DataFrame
+print(df)
+
+Q14. How do you sort a Pandas DataFrame by a specific column?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'salary': [50000, 60000, 70000]
+})
+
+# Sort the DataFrame by the 'age' column in ascending order
+df_sorted = df.sort_values('age')
+
+# Print the sorted DataFrame
+print(df_sorted)
+
+Q15. How do you create a copy of a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie'],
+    'age': [25, 30, 35],
+    'salary': [50000, 60000, 70000]
+})
+
+# Create a copy of the DataFrame
+df_copy = df.copy()
+
+Q16. How do you filter rows of a Pandas DataFrame by multiple conditions?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Filter the DataFrame by multiple conditions
+df_filtered = df[(df['age'] > 30) & (df['gender'] == 'M')]
+
+# Print the filtered DataFrame
+print(df_filtered)
+
+Q17. How do you calculate the mean of a column in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Calculate the mean of the salary column
+mean_salary = df['salary'].mean()
+
+# Print the mean salary
+print(mean_salary)
+
+Q18. How do you calculate the standard deviation of a column in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Calculate the standard deviation of the salary column
+std_salary = df['salary'].std()
+
+# Print the standard deviation of the salary column
+print(std_salary)
+
+Q19. How do you calculate the correlation between two columns in a Pandas DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'x': [1, 2, 3, 4, 5],
+    'y': [5, 4, 3, 2, 1]
+})
+
+# Calculate the correlation between the x and y columns
+correlation = df['x'].corr(df['y'])
+
+# Print the correlation
+print(correlation)
+
+Q20. How do you select specific columns in a DataFrame using their labels?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Select specific columns by label
+selected_cols = df[['name', 'salary']]
+
+# Print the selected columns
+print(selected_cols)
+
+Q21. How do you select specific rows in a DataFrame using their indexes?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Select specific rows by index
+selected_rows = df.iloc[[0, 2]]
+
+# Print the selected rows
+print(selected_rows)
+
+Q22. How do you sort a DataFrame by a specific column?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Sort the DataFrame by salary in descending order
+sorted_df = df.sort_values('salary', ascending=False)
+
+# Print the sorted DataFrame
+print(sorted_df)
+
+Q23. How do you create a new column in a DataFrame based on the values of another column?
+sol:-
+import pandas as pd
+
+# Create a DataFrame
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'David'],
+    'age': [25, 30, 35, 40],
+    'gender': ['F', 'M', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 80000]
+})
+
+# Create a new column called 'bonus' that is 10% of the salary column
+df['bonus'] = 0.1 * df['salary']
+
+# Print the DataFrame with the new column
+print(df)
+
+Q24. How do you remove duplicates from a DataFrame?
+sol:-
+import pandas as pd
+
+# Create a DataFrame with some duplicate rows
+df = pd.DataFrame({
+    'name': ['Alice', 'Bob', 'Charlie', 'Alice', 'David', 'Charlie'],
+    'age': [25, 30, 35, 25, 40, 35],
+    'gender': ['F', 'M', 'M', 'F', 'M', 'M'],
+    'salary': [50000, 60000, 70000, 50000, 80000, 70000]
+})
+
+# Remove the duplicate rows based on all columns
+df_unique = df.drop_duplicates()
+
+# Print the original DataFrame and the new DataFrame with duplicates removed
+print('Original DataFrame:\n', df)
+print('\nDataFrame with duplicates removed:\n', df_unique)
+
+Q25. What is the difference between .loc and .iloc in Pandas?
+sol:-
+.loc is label-based, meaning it uses the labels of rows and columns to select data. You can use it to select rows based on labels, or to select specific rows and columns by label-based slicing. 
+For example, you can use .loc to select rows where the value in the "column_name" column equals some value: df.loc[df['column_name'] == value]
+
+.iloc is index-based, meaning it uses the integer position of rows and columns to select data. You can use it to select rows based on their position, or to select specific rows and columns by position-based slicing. 
+For example, you can use .iloc to select the first 5 rows of a DataFrame: df.iloc[:5]
+
+=> .loc is used for label-based selection, while .iloc is used for index-based selection.
+
+
+
+
